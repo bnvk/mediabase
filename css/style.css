@@ -34,9 +34,9 @@ li {
 }
 
 
-h1 { font-size: 60px; font-family: 'Oswald', sans-serif; text-transform: uppercase; line-height: 60px; }
-h2 { font-size: 36px; font-family: 'Oswald', sans-serif; text-transform: uppercase; line-height: 36px; }
-h3 { font-size: 24px; font-family: 'Oswald', sans-serif; text-transform: uppercase; line-height: 24px; }
+h1 { font-size: 60px; font-family: 'Oswald', sans-serif; text-transform: uppercase; line-height: 60px; letter-spacing: -2px; }
+h2 { font-size: 36px; font-family: 'Oswald', sans-serif; text-transform: uppercase; line-height: 36px; letter-spacing: -1px; }
+h3 { font-size: 24px; font-family: 'Oswald', sans-serif; text-transform: uppercase; line-height: 24px; letter-spacing: 0px; }
 
 h1,h2,h3 { margin: 0; padding: 0px; }
 
@@ -61,8 +61,7 @@ span.normal_font	{ font-weight: normal; }
 /* Layout */
 #header {
 	background: url(../images/Logo-Fist.png) 0 0 no-repeat;
-	height: 120px;
-	margin: 30px auto 15px auto;
+	margin: 30px auto 45px auto;
 	padding: 0 0 0 0px;
 }
 

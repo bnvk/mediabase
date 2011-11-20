@@ -24,7 +24,7 @@ Upcoming Features
 -----------------
 * Ability to add contact information (with an upload)
 * Email notifications to admins
-* More pretty browsing / viewing up uploaded content
+* Better browsing / viewing / downloading of uploaded content (perhaps integrate Popcorn.js)
 
 Credits
 -------
