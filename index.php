@@ -32,7 +32,7 @@ $(function() {
 		// General settings
 		runtimes : 'gears,flash,browserplus,html5',
 		url : 'upload.php',
-		max_file_size : '150mb',
+		max_file_size : '<?= $max_files ?>',
 		chunk_size : '1mb',
 		unique_names : true,
 		filters : [
@@ -76,6 +76,11 @@ $(function() {
 	</div>
 </div>
 <div id="content" class="center_wrapper">
+	<h3>Rules & Requirements</h3>
+	<ul>
+		<li>Max File Size: <strong><?= $max_files ?></strong></li>
+		<li>Allowed File Formats: <strong><?= $picture_formats.','.$file_formats.','.$video_formats ?></strong></li>
+	</ul>
 	<h3>What Is This Tool?</h3>
 	<ul>
 		<li>MediaBase is a simple anonymous file uploading tool for the Occupy Movement</li>
