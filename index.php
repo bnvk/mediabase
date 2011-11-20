@@ -76,11 +76,15 @@ $(function() {
 	</div>
 </div>
 <div id="content" class="center_wrapper">
+	<h3>What Is This Tool?</h3>
+	<ul>
+		<li>MediaBase is a simple anonymous file uploading tool for the Occupy Movement</li>
+	</ul>
 	<h3>Who Should Use This Tool?</h3>
 	<ul>
-		<li>People who agree with and consider themselves part of the Occupy movement</li>
-		<li>People who are one the fence about joining the occupy movement</li>
-		<li>People who don't want to be connected to, but happen to have media they feel Occupy should have</li>
+		<li>People who consider themselves part of the Occupy Movement</li>
+		<li>People who are on the fence about joining the Occupy Movement, but have some media</li>
+		<li>People who who have media, but don't want to be connected to or associated with to Occupy</li>
 	</ul>
 	<h3>Is It Safe To Upload My Content?</h3>
 	<ul>
@@ -94,7 +98,7 @@ $(function() {
 	<h3>Want To Install Your Own Media Base?</h3>
 	<ul>
 		<li>Do you help the media, legal, or press team of your local occupy?</li>
-		<li>Great, point your clicker <a href="http://github.com/brennannovak/mediabase" target="_blank">here</a> to download your copy of this software</li>
+		<li>Great, point your clicker here and download the <a href="http://github.com/brennannovak/mediabase" target="_blank">source code</a> of this software</li>
 	</ul>
 </div>
 <div id="footer" class="center_wrapper">
