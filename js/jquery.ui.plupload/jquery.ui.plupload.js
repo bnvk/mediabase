@@ -53,7 +53,7 @@ function renderUI(obj) {
 							'<td class="plupload_cell plupload_file_name">' +
 
 								'<div class="plupload_buttons"><!-- Visible -->' +
-									'<a class="plupload_button plupload_add">' + _('Add Files') + '</a>&nbsp;' +
+									'<a class="plupload_button plupload_add">' + _('Add Pictures & Videos') + '</a>&nbsp;' +
 									'<a class="plupload_button plupload_start">' + _('Start Upload') + '</a>&nbsp;' +
 									'<a class="plupload_button plupload_stop plupload_hidden">'+_('Stop Upload') + '</a>&nbsp;' +
 								'</div>' +
@@ -560,7 +560,7 @@ $.widget("ui.plupload", {
 		$('.plupload_total_file_size', self.element).html(plupload.formatSize(uploader.total.size));
 
 		if (uploader.total.queued === 0) {
-			$('.ui-button-text', self.browse_button).text(_('Add Files'));
+			$('.ui-button-text', self.browse_button).text(_('Add Pictures & Videos'));
 		} else {
 			$('.ui-button-text', self.browse_button).text(_('%d files queued').replace('%d', uploader.total.queued));
 		}

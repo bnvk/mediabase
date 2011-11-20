@@ -1,0 +1,6 @@
+<?php
+$occupation			= 'Portland';
+$picture_formats	= 'jpg,gif,png,bmp,jpeg';
+$file_formats		= 'doc,xls,pdf';
+$video_formats		= 'mov,mp4,flv,ogg,avi,m4v,3gp,wmv';
+?>

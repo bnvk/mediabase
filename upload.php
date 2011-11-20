@@ -16,11 +16,10 @@ header("Cache-Control: no-store, no-cache, must-revalidate");
 header("Cache-Control: post-check=0, pre-check=0", false);
 header("Pragma: no-cache");
 
-
+session_start();
 
 // Settings
-//$targetDir = ini_get("upload_tmp_dir") . DIRECTORY_SEPARATOR . "plupload";
-$targetDir = 'uploads/';
+$targetDir = 'uploads/'.session_id().'/';
 
 
 //$cleanupTargetDir = false; // Remove old files
@@ -34,9 +33,9 @@ $targetDir = 'uploads/';
 // usleep(5000);
 
 // Get parameters
-$chunk = isset($_REQUEST["chunk"]) ? $_REQUEST["chunk"] : 0;
-$chunks = isset($_REQUEST["chunks"]) ? $_REQUEST["chunks"] : 0;
-$fileName = isset($_REQUEST["name"]) ? $_REQUEST["name"] : '';
+$chunk		= isset($_REQUEST["chunk"]) ? $_REQUEST["chunk"] : 0;
+$chunks		= isset($_REQUEST["chunks"]) ? $_REQUEST["chunks"] : 0;
+$fileName	= isset($_REQUEST["name"]) ? $_REQUEST["name"] : '';
 
 // Clean the fileName for security reasons
 $fileName = preg_replace('/[^\w\._]+/', '', $fileName);
@@ -83,43 +82,67 @@ if (isset($_SERVER["CONTENT_TYPE"]))
 	$contentType = $_SERVER["CONTENT_TYPE"];
 
 // Handle non multipart uploads older WebKit versions didn't support multipart in HTML5
-if (strpos($contentType, "multipart") !== false) {
-	if (isset($_FILES['file']['tmp_name']) && is_uploaded_file($_FILES['file']['tmp_name'])) {
+if (strpos($contentType, "multipart") !== false)
+{
+	if (isset($_FILES['file']['tmp_name']) && is_uploaded_file($_FILES['file']['tmp_name']))
+	{
 		// Open temp file
 		$out = fopen($targetDir . DIRECTORY_SEPARATOR . $fileName, $chunk == 0 ? "wb" : "ab");
-		if ($out) {
+		if ($out)
+		{
 			// Read binary input stream and append it to temp file
 			$in = fopen($_FILES['file']['tmp_name'], "rb");
 
-			if ($in) {
+			if ($in)
+			{
 				while ($buff = fread($in, 4096))
 					fwrite($out, $buff);
-			} else
+			} 
+			else
+			{
 				die('{"jsonrpc" : "2.0", "error" : {"code": 101, "message": "Failed to open input stream."}, "id" : "id"}');
+			}
+			
 			fclose($in);
 			fclose($out);
 			@unlink($_FILES['file']['tmp_name']);
-		} else
+		}
+		else
+		{
 			die('{"jsonrpc" : "2.0", "error" : {"code": 102, "message": "Failed to open output stream."}, "id" : "id"}');
-	} else
+		}
+	}
+	else
+	{
 		die('{"jsonrpc" : "2.0", "error" : {"code": 103, "message": "Failed to move uploaded file."}, "id" : "id"}');
-} else {
+	}
+}
+else
+{
 	// Open temp file
 	$out = fopen($targetDir . DIRECTORY_SEPARATOR . $fileName, $chunk == 0 ? "wb" : "ab");
-	if ($out) {
+	if ($out)
+	{
 		// Read binary input stream and append it to temp file
 		$in = fopen("php://input", "rb");
 
-		if ($in) {
+		if ($in)
+		{
 			while ($buff = fread($in, 4096))
 				fwrite($out, $buff);
-		} else
+		}
+		else
+		{
 			die('{"jsonrpc" : "2.0", "error" : {"code": 101, "message": "Failed to open input stream."}, "id" : "id"}');
+		}
 
 		fclose($in);
 		fclose($out);
-	} else
+	} 
+	else
+	{
 		die('{"jsonrpc" : "2.0", "error" : {"code": 102, "message": "Failed to open output stream."}, "id" : "id"}');
+	}
 }
 
 // Return JSON-RPC response

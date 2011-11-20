@@ -46,7 +46,7 @@
 							'<div class="plupload_filelist_footer">' +
 								'<div class="plupload_file_name">' +
 									'<div class="plupload_buttons">' +
-										'<a href="#" class="plupload_button plupload_add">' + _('Add files') + '</a>' +
+										'<a href="#" class="plupload_button plupload_add">' + _('Add Pictures & Videos') + '</a>' +
 										'<a href="#" class="plupload_button plupload_start">' + _('Start upload') + '</a>' +
 									'</div>' +
 									'<span class="plupload_upload_status"></span>' +
