@@ -5,6 +5,7 @@
 <title>Occupy <?= $occupation ?>: Media Base</title>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
  
+<link rel="icon" type="image/png" href="favicon.png" />
 <link href="http://fonts.googleapis.com/css?family=Oswald" rel="stylesheet" type="text/css">
 <link rel="stylesheet" type="text/css" href="css/style.css" media="screen" />
 <link rel="stylesheet" type="text/css" href="css/jquery-ui.css" type="text/css" />
