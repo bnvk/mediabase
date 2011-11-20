@@ -33,7 +33,7 @@ $(function() {
 		runtimes : 'gears,flash,browserplus,html5',
 		url : 'upload.php',
 		max_file_size : '150mb',
-		chunk_size : '2mb',
+		chunk_size : '1mb',
 		unique_names : true,
 		filters : [
 			{title : "Image Files", extensions : "<?= $picture_formats ?>"},
