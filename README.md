@@ -20,6 +20,12 @@ Installation
 * Make file permissions of /uploads to "writable" or 777
 * Add .htaccess to make /uploads folder password protected
 
+Upcoming Features
+-----------------
+* Ability to add contact information (with an upload)
+* Email notifications to admins
+* More pretty browsing / viewing up uploaded content
+
 Credits
 -------
 
