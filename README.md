@@ -15,8 +15,10 @@ Installation
 
 * Download files in this project (or git clone if you swing that way)
 * Upload files to your webserver
-* Duplicate & Change config.php.TEMPLATE to config.php
+* Duplicate & Change includes/config.php.TEMPLATE to includes/config.php
 * Set name of occupation and allowable files types in config.php
+* Duplicate & Change includes/categires.php.TEMPLATE to includes/categories.php
+* Add categories you desire, match syntax
 * Make file permissions of /uploads to "writable" or 777
 * Add .htaccess to make /uploads folder password protected
 

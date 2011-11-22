@@ -86,10 +86,8 @@ function renderUI(obj) {
 
 $.widget("ui.plupload", {
 	
-	contents_bak: '',
-	
+	contents_bak: '',	
 	runtime: null,
-	
 	options: {
 		browse_button_hover: 'ui-state-hover',
 		browse_button_active: 'ui-state-active',
@@ -252,7 +250,7 @@ $.widget("ui.plupload", {
 			self._updateFileList();
 		});
 		
-		uploader.bind('StateChanged', function() {
+		uploader.bind('StateChanged', function() {	
 			self._handleState();
 		});
 		
@@ -373,7 +371,10 @@ $.widget("ui.plupload", {
 	},
 	
 	
-	start: function() {
+	start: function() {		
+		// Hacked to include upload category
+		this.uploader.settings.multipart_params.upload_category = $('#upload_category').val();	
+		this.uploader.refresh();
 		this.uploader.start();
 		this._trigger('start', null);
 	},

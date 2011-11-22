@@ -1,4 +1,4 @@
-<?php include_once('config.php'); ?>
+<?php include_once('includes/config.php'); ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" dir="ltr">
 <head>
@@ -29,8 +29,9 @@
 <script type="text/javascript">
 // Convert divs to queue widgets when the DOM is ready
 $(function() {
-	$("#uploader").plupload({
-		// General settings
+
+	$("#uploader").plupload(
+	{
 		runtimes : 'gears,flash,browserplus,html5',
 		url : 'upload.php',
 		max_file_size : '<?= $max_files ?>',
@@ -41,7 +42,9 @@ $(function() {
 			{title : "Document Files", extensions : "<?= $file_formats ?>"},
 			{title : "Video Files", extensions : "<?= $video_formats ?>"}
 		],
-		flash_swf_url : 'js/plupload.flash.swf'
+		flash_swf_url : 'js/plupload.flash.swf',
+		multipart 		: true,
+		multipart_params: {'upload_category':'uncategorized'}		
 	});
 
 	// Client side form validation
@@ -49,20 +52,26 @@ $(function() {
         var uploader = $('#uploader').plupload('getUploader');
 
         // Files in queue upload them first
-        if (uploader.files.length > 0) {
+        if (uploader.files.length > 0)
+        {
             // When all files are uploaded submit form
-            uploader.bind('StateChanged', function() {
-                if (uploader.files.length === (uploader.total.uploaded + uploader.total.failed)) {
+            uploader.bind('StateChanged', function()
+            {
+                if (uploader.files.length === (uploader.total.uploaded + uploader.total.failed))
+                {
                     $('form')[0].submit();
                 }
             });
                 
             uploader.start();
+            
+            console.log(uploader);
         }
         else 
         {
             alert('You must at least upload one file.');
 		}
+
         return false;
     });
 });
@@ -72,6 +81,17 @@ $(function() {
 	<h3>A Safe & Anonymous Way to Upload Media to an Occupation</h3>
 </div>
 <div id="main" class="center_wrapper">
+	<h3>Media Category</h3>
+	<select id="upload_category" name="category">	
+		<option value="">----- select -----</option>
+		<?php
+		include_once('includes/categories.php');
+		foreach ($categories as $key => $value): ?>
+		<option value="<?= $key ?>"><?= $value ?></option>
+		<?php endforeach; ?>
+	</select>
+	
+	<h3>Media Files</h3>
 	<div id="uploader">
 		<p>You browser doesn't have Flash, Silverlight, Gears, BrowserPlus or HTML5 support.</p>
 	</div>

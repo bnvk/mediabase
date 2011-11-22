@@ -19,18 +19,20 @@ header("Pragma: no-cache");
 session_start();
 
 // Settings
-$targetDir = 'uploads/'.session_id().'/';
-
+if ($_REQUEST['upload_category'] != '')
+{
+	$targetDir = 'uploads/'.$_REQUEST['upload_category'].'/';
+}
+else
+{
+	$targetDir = 'uploads/uncategorized/';
+}
 
 //$cleanupTargetDir = false; // Remove old files
 //$maxFileAge = 60 * 60; // Temp file age in seconds
 
-
 // 5 minutes execution time
 @set_time_limit(5 * 60);
-
-// Uncomment this one to fake upload time
-// usleep(5000);
 
 // Get parameters
 $chunk		= isset($_REQUEST["chunk"]) ? $_REQUEST["chunk"] : 0;
@@ -56,7 +58,9 @@ if ($chunks < 2 && file_exists($targetDir . DIRECTORY_SEPARATOR . $fileName))
 
 // Create target dir
 if (!file_exists($targetDir))
+{
 	@mkdir($targetDir);
+}
 
 // Remove old temp files
 /* this doesn't really work by now
@@ -77,10 +81,14 @@ if (is_dir($targetDir) && ($dir = opendir($targetDir))) {
 
 // Look for the content type header
 if (isset($_SERVER["HTTP_CONTENT_TYPE"]))
+{
 	$contentType = $_SERVER["HTTP_CONTENT_TYPE"];
+}
 
 if (isset($_SERVER["CONTENT_TYPE"]))
+{
 	$contentType = $_SERVER["CONTENT_TYPE"];
+}
 
 // Handle non multipart uploads older WebKit versions didn't support multipart in HTML5
 if (strpos($contentType, "multipart") !== false)
@@ -121,7 +129,7 @@ if (strpos($contentType, "multipart") !== false)
 else
 {
 	// Open temp file
-	$out = fopen($targetDir . DIRECTORY_SEPARATOR . $fileName, $chunk == 0 ? "wb" : "ab");
+	$out = fopen($targetDir.DIRECTORY_SEPARATOR.$fileName, $chunk == 0 ? "wb" : "ab");
 	if ($out)
 	{
 		// Read binary input stream and append it to temp file
@@ -148,5 +156,4 @@ else
 
 // Return JSON-RPC response
 die('{"jsonrpc" : "2.0", "result" : null, "id" : "id"}');
-
 ?>
