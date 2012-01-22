@@ -72,10 +72,17 @@ span.normal_font	{ font-weight: normal; }
 	padding: 0;
 	margin: 0 auto 45px auto;
 }
-#main h3 {
+#embed {
+	width: 80%;
+	margin: 25px auto 45px auto;
+}
+#embed #uploader { 
+	margin-bottom: 45px;
+}
+#main h3, #embed h3 {
 	margin: 15px 0 15px 0;
 }
-#main select {
+#main select, #embed select {
 	margin: 0 0 25px 0;
 }
 #content { 

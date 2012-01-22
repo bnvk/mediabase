@@ -1,5 +1,0 @@
-<?php 
-$categories = array(
-	"marches"				=> "Marches",
-);
-?>
